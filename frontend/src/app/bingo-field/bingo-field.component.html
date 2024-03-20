@@ -1,0 +1,11 @@
+<div (click)="onClick()"
+     class="bingo-field"
+     data-cy="bingo-field"
+     [class.selected]="selected">
+  {{ text }}
+
+  @if (selected) {
+    <img src="assets/kruemelmonster.jpg" alt="Checked"
+         class="checked-image">
+  }
+</div>

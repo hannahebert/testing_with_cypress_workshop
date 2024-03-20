@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="container-header">
+    <h1>Bingo</h1>
+  </div>
+
+  <div class="login-form" data-cy="login-form">
+    <h3>Anmeldung</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <label for="username">Name:</label>
+        <input type="text" id="username" formControlName="username"
+               data-cy="username">
+      </div>
+
+      <div class="row">
+        <label for="password">Password:</label>
+        <input type="password" id="password" formControlName="password"
+               data-cy="password">
+      </div>
+
+      <div class="button-row">
+        <button type="submit" [disabled]="form.invalid"
+                data-cy="submit-button">
+          Login
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

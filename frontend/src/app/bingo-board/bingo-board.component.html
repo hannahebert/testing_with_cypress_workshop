@@ -1,0 +1,38 @@
+<div class="header-container">
+  <h1 class="board-title">Bingo</h1>
+  <button (click)="logout()">
+    Logout
+  </button>
+</div>
+
+<div class="category-button-container">
+  <button (click)="setCategoryAndFetchBingoItems(bingoCategoryEnum.OFFICE)"
+          [class.disabled]="activeBingoCategory === bingoCategoryEnum.OFFICE">
+    Office Bingo
+  </button>
+  <button (click)="setCategoryAndFetchBingoItems(bingoCategoryEnum.VACATION)"
+          [class.disabled]="activeBingoCategory === bingoCategoryEnum.VACATION">
+    Vacation Bingo
+  </button>
+
+  <button (click)="shuffle()"
+          class="shuffle-button"
+          [class.disabled]="fieldsSelected"
+          title="Order can only be shuffled when no field was selected yet.">
+    Shuffle order
+  </button>
+</div>
+
+@if (checkForBingo()) {
+  <p class="info-gewonnen" data-cy="winning-message">
+    Bingo! Du hast gewonnen!
+  </p>
+}
+
+<div class="board">
+  @for (field of fields; track field.id; let idx = $index) {
+    <app-bingo-field [text]="field.text"
+                     (toggleSelected)="toggleSelected(idx)">
+    </app-bingo-field>
+  }
+</div>

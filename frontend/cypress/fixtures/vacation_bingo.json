@@ -1,0 +1,127 @@
+[
+  {
+    "id": 30,
+    "category": "vacation",
+    "text": "&&&Lay on the beach"
+  },
+  {
+    "id": 47,
+    "category": "vacation",
+    "text": "&&&Drink alcohole"
+  },
+  {
+    "id": 38,
+    "category": "vacation",
+    "text": "&&&Gained weight"
+  },
+  {
+    "id": 42,
+    "category": "vacation",
+    "text": "&&&Ate barbeque"
+  },
+  {
+    "id": 29,
+    "category": "vacation",
+    "text": "&&&Climb up a hill"
+  },
+  {
+    "id": 31,
+    "category": "vacation",
+    "text": "&&&Get sunburned"
+  },
+  {
+    "id": 35,
+    "category": "vacation",
+    "text": "&&&Did sports"
+  },
+  {
+    "id": 43,
+    "category": "vacation",
+    "text": "&&&Swam at a public pool"
+  },
+  {
+    "id": 34,
+    "category": "vacation",
+    "text": "&&&Travelled abroad"
+  },
+  {
+    "id": 44,
+    "category": "vacation",
+    "text": "&&&Had a picnic"
+  },
+  {
+    "id": 28,
+    "category": "vacation",
+    "text": "&&&Another German tourist"
+  },
+  {
+    "id": 37,
+    "category": "vacation",
+    "text": "&&&Went fishing"
+  },
+  {
+    "id": 27,
+    "category": "vacation",
+    "text": "&&&Cannot read the menu"
+  },
+  {
+    "id": 39,
+    "category": "vacation",
+    "text": "&&&Saw fireworks"
+  },
+  {
+    "id": 26,
+    "category": "vacation",
+    "text": "&&&Reading a book"
+  },
+  {
+    "id": 50,
+    "category": "vacation",
+    "text": "&&&Learned a new language"
+  },
+  {
+    "id": 33,
+    "category": "vacation",
+    "text": "&&&Learned something new"
+  },
+  {
+    "id": 32,
+    "category": "vacation",
+    "text": "&&&Lost hotel room key"
+  },
+  {
+    "id": 48,
+    "category": "vacation",
+    "text": "&&&Went on a boat"
+  },
+  {
+    "id": 36,
+    "category": "vacation",
+    "text": "&&&Binge-watched Netflix"
+  },
+  {
+    "id": 41,
+    "category": "vacation",
+    "text": "&&&Did something social"
+  },
+  {
+    "id": 40,
+    "category": "vacation",
+    "text": "&&&Visited the family"
+  },
+  {
+    "id": 49,
+    "category": "vacation",
+    "text": "&&&Fell in love"
+  },
+  {
+    "id": 45,
+    "category": "vacation",
+    "text": "&&&Played soccer"
+  },
+  {
+    "id": 46,
+    "category": "vacation",
+    "text": "&&&Has broken a bone"
+  }
+]

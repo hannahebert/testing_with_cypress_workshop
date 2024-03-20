@@ -29,7 +29,7 @@
   </p>
 }
 
-<div class="board">
+<div data-cy="bingo-board" class="board">
   @for (field of fields; track field.id; let idx = $index) {
     <app-bingo-field [text]="field.text"
                      (toggleSelected)="toggleSelected(idx)">

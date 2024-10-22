@@ -1,10 +1,19 @@
 # JS Days Cypress Workshop
 
-To run the frontend in watch-mode do:
-1. `cd ./frontend` from root
-2. `npm i && npm start`
+## Frontend
 
+To run the frontend in watch-mode do:
+```bash
+cd .. && npm i && npm start
+```
+
+## Backend
 
 To run the backend in watch-mode do:
-1. `cd ./backend` from root
-2. `npm i && npm start`
+```bash
+cd ../../backend && npm i && npm start
+```
+
+## Cypress Übungen
+
+Die Cypress Übungen befinden sich in der `cypress`-Verzeichnisstruktur (`./frontend/cypress`).

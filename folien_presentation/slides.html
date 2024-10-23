@@ -21,6 +21,20 @@
         .slides section.has-light-background h2 {
             color: #222;
         }
+
+        .reveal code {
+            tab-size: 0;
+            -moz-tab-size: 1;
+            -o-tab-size: 1;
+            -webkit-tab-size: 1;
+        }
+
+        /*.reveal pre code {
+            tab-size: 1 !important;
+            -moz-tab-size: 1 !important;
+            -o-tab-size: 1 !important;
+            -webkit-tab-size: 1 !important;
+        }*/
     </style>
 </head>
 <body>
@@ -158,13 +172,14 @@
                 damit der nächste Bugfix nicht zu einer archäologischen Ausgrabung wird.
             </section>
             <section>
-                <h2>Grezfälle</h2>
+                <h2>Grenzfälle</h2>
                 Weil es immer jemanden gibt, der Dinge anders benutzt, als sie gedacht sind.
             </section>
             <section>
                 <h2>Dokumentation</h2>
                 Weil niemand Lust hat, nach einem Jahr wieder herauszufinden, was ‘doSomething()’ eigentlich tut.
             </section>
+            <section><h2>Graue Theorie</h2></section>
             <section>
                 <h3>Automatisiertes Testen</h3>
                 <p>vs.</p>
@@ -214,11 +229,17 @@
             </section>
             <section>
                 <h2>Integration Testing</h2>
+            </section>
+            <section>
+                <h2>Integration Testing</h2>
                 <p>Funktionieren die einzelnen Komponenten auch im Zusammenspiel miteinander?</p>
                 <ul>
                     <li>Verknüpfung von voneinander unabhängigen Komponenten</li>
                     <li>Bspw. Verknüpfung von Daten, Anwendungen, APIs und Geräten</li>
                 </ul>
+            </section>
+            <section>
+                <h2>End-To-End Testing</h2>
             </section>
             <section>
                 <h2>End-To-End Testing</h2>
@@ -301,41 +322,176 @@
                 <h1>Let's see the magic</h1>
             </section>
             <section data-background-image="./images/stars.jpg">
-                <pre class="bash"><code data-trim data-noescape class="hljs">
+                <pre class="bash"><code data-trim data-noescape data-line-numbers="1|2" class="hljs">
                     $ npm  install  –-save-dev  cypress
                     $ npx  cypress  open
                 </code></pre>
             </section>
+            <section data-background-image="./images/stars.jpg">
+                <h2>Testaufbau</h2>
+            </section>
+            <section>
+                <pre data-id="code" class="javascript"><code data-line-numbers="1,12|2-4|6,11|7-10" class="hljs"
+                >describe('login', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:4200/');
+  })
+
+  it('should successfully login', () => {
+    cy.contains('Bingo');
+
+    cy.get('[data-cy="login-form"]')
+        .should('contain', 'Anmeldung');
+  })
+})
+                </code></pre>
+            </section>
+            <section>
+                <h2>Assertions vs. Commands</h2>
+                <p class="fragment"><strong>Commands</strong> sind Aktionen, die auf der Seite ausgeführt werden.</p>
+                <p class="fragment"><strong>Assertions</strong> sind Überprüfungen, die das Verhalten der Seite testen.
+                </p>
+                <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+                >cy.get('my-selector')           // Command
+    .should('have.length',5);   // Assertion
+                </code></pre>
+            </section>
+            <section>
+                <h2>Commands: Query vs. Non-Query</h2>
+                <p class="fragment"><strong>Query</strong>: Elemente finden</p>
+                <p class="fragment"><strong>Non-Query</strong>: Aktionen ausführen</p>
+                <p class="fragment">=> Query Commands geben ein Element zurück, Non-Query Commands nicht.</p>
+
+
+                <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+                >cy.get('button')       // Query Command
+    .click();         // Non-Query Command
+                </code></pre>
+            </section>
         </section>
         <section>
+            <section>
+                <h2>Custom Cypress Command: Login</h2>
+                <pre><code class="typescript" data-line-numbers="1-2,17|3-12|13-14|16"
+                >Cypress.Commands.add('login',(username: string,
+                    password: string): void => {
+  cy.visit('login');
+  cy.get('[data-cy="username"]')
+    .type('cypress', {log: false});
+  cy.get('[data-cy="password"]')
+    .type('bingo', {log: false});
+
+  cy.get('[data-cy="submit-button"]')
+    .click()
+    .should('not.exist');
+
+  cy.url()
+    .should('eq', `${Cypress.config().baseUrl}/bingo-board`);
+
+  cy.get('.board-title').should('have.text', 'Bingo');
+});
+    </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Chain of Commands - Retry Logic</h2>
+            </section>
             <section data-auto-animate>
-                <h2>Chain of Commands</h2>
-                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs" data-trim>
-					cy.get('my-selector')
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+    .eq(1)
+    .should('contain', 'magic');
                 </code></pre>
             </section>
             <section data-auto-animate>
-                <h2>Chain of Commands</h2>
-                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs" data-trim>
-					cy.get('my-selector')
-                    .should('have.length',5)
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs"
+                >cy.get('my-selector')
                 </code></pre>
             </section>
             <section data-auto-animate>
-                <h2>Chain of Commands</h2>
-                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs" data-trim>
-					cy.get('my-selector')
-                    .should('have.length',5)
-                    .eq(1)
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript">
+                    <code data-line-numbers="2" class="hljs"
+                    >cy.get('my-selector')
+    .should('have.length',5)    // FAIL
+                    </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs"
+                >cy.get('my-selector')
                 </code></pre>
             </section>
             <section data-auto-animate>
-                <h2>Chain of Commands</h2>
-                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs" data-trim>
-					cy.get('my-selector')
-                    .should('have.length',5)
-                    .eq(1)
-                    .should('contain', 'magic');
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript">
+                    <code data-line-numbers="2" class="hljs"
+                    >cy.get('my-selector')
+    .should('have.length',5)
+                    </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="3" class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+    .eq(1)
+                </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="4" class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+    .eq(1)
+    .should('contain', 'magic');
+                </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="4" class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+    .eq(1)
+    .should('contain', 'magic'); // FAIL
+                </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers class="hljs"
+                >cy.get('my-selector')
+                </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="2" class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+                </code></pre>
+            </section>
+            <section data-auto-animate>
+                <h2>Chain of Commands - Retry Logic</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="3" class="hljs"
+                >cy.get('my-selector')
+    .should('have.length',5)
+    ...
+                </code></pre>
+            </section>
+            <section>
+                <h2>Get vs. Find vs. contains </h2>
+                <p><strong>cy.get()</strong> - Findet ein Element</p>
+                <p><strong>cy.find()</strong> - Findet ein Kind-Element</p>
+                <p><strong>cy.contains()</strong> - Findet ein Element anhand des Textes</p>
+
+                <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+                > cy.contains('Bingo');
+cy.get('[data-cy="login-form"]')
+    .find('h3')
+    .should('contain', 'Anmeldung');
                 </code></pre>
             </section>
         </section>

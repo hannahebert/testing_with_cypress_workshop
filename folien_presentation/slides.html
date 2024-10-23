@@ -7,7 +7,7 @@
     <title>Cypress - Die Kunst der simplen E2E Tests</title>
 
     <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/dracula.css" id="theme">
     <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
 
     <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
@@ -31,7 +31,29 @@
             <p>Die Kunst der simplen E2E Tests</p>
         </section>
         <section>
-            <section data-background-image="./images/stars.jpg">>
+            <section>
+                <div class="r-hstack justify-center">
+                    <ul>
+                        <li>Milena Fluck</li>
+                        <li>adesso SE</li>
+                        <li>Senior Software Engineer</li>
+                    </ul>
+                    <img class="h-stack" src="./images/milena2.jpg"/>
+                </div>
+            </section>
+            <section>
+                <div class="r-hstack justify-center">
+                    <ul>
+                        <li>Hannah Ebert</li>
+                        <li>adesso SE</li>
+                        <li>Software Architektin</li>
+                    </ul>
+                    <img class="h-stack" src="./images/hannah.jpeg"/>
+                </div>
+            </section>
+        </section>
+        <section>
+            <section data-background-image="./images/stars.jpg">
                 <h2>Agenda</h2>
                 <ul>
                     <li>Grundlagen Testing</li>
@@ -41,17 +63,8 @@
             </section>
             <section data-background-image="./images/menti.png"></section>
         </section>
-        <section data-visibility="hidden">
-            <div class="r-stretch">
-                <img class="fragment" src="./images/milena.jpg" width="383" height="511"/>
-                <!--                <img class="fragment" src="./images/milena2.jpg" width="265" height="266"/>-->
-                <!--                <img class="fragment" src="./images/milena3.jpg" width="163" height="245"/>-->
-                <!--                <img class="fragment" src="./images/milena4.jpg" width="368" height="245"/>-->
-                <!--                <img class="fragment" src="./images/milena5.jpg" width="265" height="271"/>-->
-            </div>
-        </section>
         <section>
-            <section>
+            <section data-background-image="./images/stars.jpg">
                 <h1>Grundlagen Testing</h1>
             </section>
             <section>
@@ -241,7 +254,7 @@
             </section>
         </section>
         <section>
-            <section data-background-color="grey">
+            <section data-background-image="./images/stars.jpg">
                 <img class="r-stretch" src="./images/Cypress_Logotype_White-Color.png"/>
 
             </section>
@@ -332,7 +345,7 @@
             </section>
             <section>
                 <h2>Resiliente Tests</h2>
-                <p>Verwende stabile selectoren (z.B. `data-cy`), um auf UI-Elemente zuzugreifen.</p>
+                <p>Verwende stabile Selectoren (z.B. `data-cy`), um auf UI-Elemente zuzugreifen.</p>
             </section>
             <section>
                 <h2>Schreibe unabhängige Tests</h2>

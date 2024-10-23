@@ -4,7 +4,7 @@
 
 1. Installiere Cypress als Dev-Dependency:
     ```bash
-    npm install --save-dev cypress
+    cd .. && npm install --save-dev cypress
     ```
 
 2. Öffne die Cypress Desktop App:

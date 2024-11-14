@@ -1,5 +1,8 @@
 describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('http://localhost:4200/')
-  })
+    it('passes', () => {
+        cy.intercept('GET', '**/bingo-items/vacation', {fixture: 'vacation_bingo.json'}).as('vacationItems');
+        cy.login('cypress', 'bingo');
+
+        cy.wait('@vacationItems');
+    })
 })

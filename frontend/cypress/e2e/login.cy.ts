@@ -1,7 +1,17 @@
 describe('login', () => {
   it('should successfully login', () => {
-    cy.visit('http://localhost:4200/')
-    cy.contains('Bingo')
-    cy.get('[data-cy="login-form"]').find('h3').should('contain', 'Anmeldung')
+
+    cy.visit('/');
+
+    cy.get('[data-cy="username"]')
+      .type('cypress');
+    cy.get('[data-cy="password"]')
+      .type('bingo', { log: false });
+
+    cy.get('[data-cy="submit-button"]').click();
+
+    cy.get('.header-container', { timeout: 10000 })
+      .find('button')
+      .should('exist');
   })
 })

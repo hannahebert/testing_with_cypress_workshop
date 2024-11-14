@@ -25,7 +25,7 @@ describe('Response', () => {
     });
 
     it('should be successfully adapted', () => {
-      cy.dataCy('bingo-field')
+      cy.get('bingo-field')
         .each(($bingoField) => {
           // mit Chai-jQuery assertions
           expect($bingoField.text().trim()).to.equal('ERSETZT');

@@ -1,4 +1,4 @@
-# JS Days Cypress Workshop
+# JS Markant Cypress Workshop
 
 ## Frontend
 
